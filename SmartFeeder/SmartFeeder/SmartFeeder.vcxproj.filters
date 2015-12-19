@@ -17,5 +17,9 @@
   <ItemGroup>
     <None Include="SmartFeeder.ino" />
   </ItemGroup>
- 
+  <ItemGroup>
+    <ClInclude Include="__vm\.SmartFeeder.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
