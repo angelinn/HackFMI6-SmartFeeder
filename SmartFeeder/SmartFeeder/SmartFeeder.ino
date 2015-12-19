@@ -76,3 +76,14 @@ bool is_bowl_full()
   }
   return true;
 }
+
+bool try_to_add_food(bool option)
+{
+  if(option = true || !is_bowl_full())
+  {
+    run_motor();
+    return true;
+  }
+  return false;
+}
+
