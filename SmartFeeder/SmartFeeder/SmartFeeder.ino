@@ -5,13 +5,14 @@
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
 
+
 const char* ssid = "dlink";
 const char* password = "";
 
 //static const uint8_t D0   = 16;
 //static const uint8_t D1   = 5;
 //static const uint8_t D2   = 4;
-//static const uint8_t D3   = 0;
+//static const uint8_t D3   = 0;	
 //static const uint8_t D4   = 2;
 //static const uint8_t D5   = 14;
 //static const uint8_t D6   = 12;
@@ -38,18 +39,18 @@ void run_motor()
 	//for (pos = 0; pos <= 90; pos += 1) 
 	{ // goes from 0 degrees to 180 degrees
 	  // in steps of 1 degree
-		myservo.write(0);              // tell servo to go to position in variable 'pos'
-		delay(780);                       // waits 15ms for the servo to reach the position
+		myservo.write(40);              // tell servo to go to position in variable 'pos'
+		delay(750);                       // waits 15ms for the servo to reach the position
 	}
-	myservo.write(93.5);
+	myservo.write(92.8);
 	delay(2000);
 }
 
 void hello_kitty()
 {
-	sing(1);
-	sing(1);
-	sing(2);
+	//sing(1);
+	//sing(1);
+	//sing(2);
 	// sing a sing a song
 }
 
@@ -59,6 +60,7 @@ bool is_bowl_full()
 	kupichka = analogRead(distance_senstor_ip);
 	Serial.print(kupichka);
 	Serial.print("  ");
+
 	if (kupichka > 500)
 	{
 		return false;
