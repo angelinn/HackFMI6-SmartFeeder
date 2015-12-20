@@ -9,12 +9,12 @@ namespace SmartFeeder.Core
 {
     public class Feeder
     {
-        private const string CONTROLLER_URL = "";
+        private const string CONTROLLER_URL = "http://10.0.201.78/feed";
 
         public async Task Feed()
         {
             HttpClient client = new HttpClient();
-            await client.GetAsync(CONTROLLER_URL + "?feed=1");
+            await client.GetAsync(CONTROLLER_URL);
         }
     }
 }
