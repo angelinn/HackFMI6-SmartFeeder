@@ -39,7 +39,7 @@ void run_motor()
 	{ // goes from 0 degrees to 180 degrees
 	  // in steps of 1 degree
 		myservo.write(0);              // tell servo to go to position in variable 'pos'
-		delay(750);                       // waits 15ms for the servo to reach the position
+		delay(780);                       // waits 15ms for the servo to reach the position
 	}
 	myservo.write(93.5);
 	delay(2000);
@@ -47,6 +47,9 @@ void run_motor()
 
 void hello_kitty()
 {
+	sing(1);
+	sing(1);
+	sing(2);
 	// sing a sing a song
 }
 
@@ -76,8 +79,16 @@ bool try_to_add_food(bool option)
 void feed()
 {
 	digitalWrite(led, 1);
-	try_to_add_food(false);
-	server.send(200, "text/plain", "cat is no longer hungry!");
+
+	if (try_to_add_food(false))
+		server.send(200, "text/plain", "cat is no longer hungry!");
+	else
+	{
+		delay(1000);
+		hello_kitty();
+		server.send(400, "text/plain", "cat is not eating very much");
+	}
+
 	digitalWrite(led, 0);
 }
 
@@ -130,6 +141,7 @@ void setup()
 void loop()
 {
 	server.handleClient();
+
 	// distnace motor tests
 	Serial.print((int)is_bowl_full());
 	Serial.print("\n");
@@ -139,7 +151,5 @@ void loop()
 	//run_motor();
 
 	delay(1);
-
-
 }
 

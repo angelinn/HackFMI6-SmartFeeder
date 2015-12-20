@@ -16,6 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="SmartFeeder.ino" />
+    <None Include="mario.ino" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.SmartFeeder.vsarduino.h">
