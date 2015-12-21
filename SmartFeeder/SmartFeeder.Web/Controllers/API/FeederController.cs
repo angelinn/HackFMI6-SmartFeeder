@@ -14,7 +14,7 @@ namespace SmartFeeder.Web.Controllers.API
     public class FeederController : ApiController
     {
         [HttpGet]
-        public async Task<IHttpActionResult> Feed()
+        public async Task<HttpResponseMessage> Feed()
         {
             Feeder handle = new Feeder();
             try
@@ -23,10 +23,12 @@ namespace SmartFeeder.Web.Controllers.API
             }
             catch (InvalidOperationException)
             {
-                return InternalServerError();
+
             }
 
-            return Ok();
+            var response = Request.CreateResponse(HttpStatusCode.Moved);
+            response.Headers.Location = new Uri("http://localhost:7395");
+            return response;
         }
 
         [HttpPost]
